@@ -19,6 +19,10 @@ function copy(obj, seen)
     return res
 end
 
+function love.mousepressed(x, y, button, istouch, presses)
+    dinosaur:mousepressed(x, y, button, istouch, presses)
+end
+
 function love.load()
     music = love.audio.newSource("ost.mp3", "stream")
     music:setLooping(true)
