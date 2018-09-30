@@ -4,7 +4,8 @@ Dinosaur = {
     yvel = 0,
     groundPos = 0.7,
     jumpHeight = -18,
-    touching = nil
+    touching = nil,
+    jumpSound = nil
 }
 
 function Dinosaur:getGPos()
@@ -12,6 +13,7 @@ function Dinosaur:getGPos()
 end
 
 function Dinosaur:load()
+    self.jumpSound = love.audio.newSource("jump.wav", "static")
     self.image = love.graphics.newImage("karlmarx.jpg")
 end
 
@@ -25,6 +27,7 @@ function Dinosaur:update(dt, obstacles, game)
     -- Jumping
     if self:onGround() and love.keyboard.isDown("up") then
         self.yvel = self.jumpHeight
+        self.jumpSound:play()
     end
 
     -- Collision
